@@ -23,6 +23,8 @@ public class Attribute {
     @Column (name = "view_id")
     private Long view_id;
 
+
+
     public String getName() {
         return name;
     }
