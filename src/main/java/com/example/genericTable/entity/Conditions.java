@@ -21,7 +21,7 @@ public class Conditions {
     @Column(name = "value_")
     private String value_;
     @Column(name = "view_id")
-    private Long view_id;
+    private Long viewId;
 
     public String getAttribute_name() {
         return attribute_name;
@@ -39,12 +39,12 @@ public class Conditions {
         this.value_ = value_;
     }
 
-    public Long getView_id() {
-        return view_id;
+    public Long getViewId() {
+        return viewId;
     }
 
-    public void setView_id(Long view_id) {
-        this.view_id = view_id;
+    public void setViewId(Long viewId) {
+        this.viewId = viewId;
     }
 
     public Long getId() {
@@ -61,7 +61,7 @@ public class Conditions {
                 "id=" + id +
                 ", attribute_name='" + attribute_name + '\'' +
                 ", value_='" + value_ + '\'' +
-                ", view_id=" + view_id +
+                ", view_id=" + viewId +
                 '}';
     }
 }

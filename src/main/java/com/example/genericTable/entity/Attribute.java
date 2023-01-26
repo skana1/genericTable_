@@ -21,7 +21,7 @@ public class Attribute {
     @Column(name = "view_name")
     private String view_name;
     @Column (name = "view_id")
-    private Long view_id;
+    private Long viewId;
 
 
 
@@ -41,12 +41,12 @@ public class Attribute {
         this.view_name = view_name;
     }
 
-    public Long getView_id() {
-        return view_id;
+    public Long getViewId() {
+        return viewId;
     }
 
-    public void setView_id(Long view_id) {
-        this.view_id = view_id;
+    public void setViewId(Long viewId) {
+        this.viewId = viewId;
     }
 
     public Long getId() {
@@ -63,7 +63,7 @@ public class Attribute {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", view_name='" + view_name + '\'' +
-                ", view_id=" + view_id +
+                ", view_id=" + viewId +
                 '}';
     }
 }

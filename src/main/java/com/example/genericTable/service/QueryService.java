@@ -1,5 +1,7 @@
 package com.example.genericTable.service;
 
+import com.example.genericTable.entity.Attribute;
+import com.example.genericTable.entity.Conditions;
 import com.example.genericTable.entity.View;
 import com.example.genericTable.repo.AttributeRepo;
 import com.example.genericTable.repo.ConditionsRepo;
@@ -25,13 +27,19 @@ public class QueryService {
     private final ViewRepo viewRepo;
 
     public List<View> findByCode(String code)  throws EntityNotFoundException{
-        List<View> viewByCode =  viewRepo.findViewByCode(code);
-        if(viewByCode.size() == 0){
+        List<View> view =  viewRepo.findViewByCode(code);
+        if(view.size() == 0){
             log.error("View not found in DB");
             throw new EntityNotFoundException("View not found!");
-        }else {
-            log.info("View found in DB: {}", code);
         }
-        return viewByCode;
+
+        Long view_id = view.get(0).getId();
+        List<Attribute> attributes = attributeRepo.findByViewId(view_id);
+        List<Conditions> conditions = conditionsRepo.findByViewId(view_id);
+
+        System.out.println(attributes);
+        System.out.println(conditions);
+
+        return view;
     }
 }
