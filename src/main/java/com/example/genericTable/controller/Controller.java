@@ -1,10 +1,12 @@
 package com.example.genericTable.controller;
 
+import com.example.genericTable.entity.View;
+import com.example.genericTable.repo.ViewRepo;
 import com.example.genericTable.service.QueryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,10 +16,9 @@ public class Controller {
 
     private final QueryService queryService;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return "hello";
+    @GetMapping("/find")
+    public List<View> findViewByCode(@RequestParam String code)  {
+        return queryService.findByCode(code);
     }
 
-    public
 }

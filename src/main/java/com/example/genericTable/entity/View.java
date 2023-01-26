@@ -16,25 +16,28 @@ public class View {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "ID", nullable = false)
     private Long id;
-    @Column(name = "attribute_name")
-    private String attribute_name;
+    @Column(name = "view_name")
+    private String view_name;
     @Column(name = "code")
-    private String code_;
+    private String code;
 
-    public String getAttribute_name() {
-        return attribute_name;
+    public View(String view_name) {
     }
 
-    public void setAttribute_name(String attribute_name) {
-        this.attribute_name = attribute_name;
+    public String getView_name() {
+        return view_name;
     }
 
-    public String getCode_() {
-        return code_;
+    public void setView_name(String view_name) {
+        this.view_name = view_name;
     }
 
-    public void setCode_(String code_) {
-        this.code_ = code_;
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Long getId() {
@@ -49,8 +52,8 @@ public class View {
     public String toString() {
         return "View{" +
                 "id=" + id +
-                ", attribute_name='" + attribute_name + '\'' +
-                ", code_='" + code_ + '\'' +
+                ", attribute_name='" + view_name + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 }
