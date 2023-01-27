@@ -26,9 +26,9 @@ public class QueryService {
     private final ConditionsRepo conditionsRepo;
     private final ViewRepo viewRepo;
 
-    public List<View> findByCode(String code)  throws EntityNotFoundException{
-        List<View> view =  viewRepo.findViewByCode(code);
-        if(view.size() == 0){
+    public String findByCode(String code) throws EntityNotFoundException {
+        List<View> view = viewRepo.findViewByCode(code);
+        if (view.size() == 0) {
             log.error("View not found in DB");
             throw new EntityNotFoundException("View not found!");
         }
@@ -40,6 +40,29 @@ public class QueryService {
         System.out.println(attributes);
         System.out.println(conditions);
 
-        return view;
+        String query = "SELECT ";
+
+        for (int i = 0; i < attributes.size(); i++) {
+            //if is the last element we do not append a comma ","
+            String attributeName = attributes.get(i).getName();
+            if (i + 1 == attributes.size()) {
+                query += attributeName;
+            } else {
+                query += attributeName + ", ";
+            }
+        }
+
+        query += " FROM " + view.get(0).getView_name() + " WHERE ";
+
+        for (int i = 0; i < conditions.size(); i++) {
+            Conditions currentConditions = conditions.get(i);
+            if (i + 1 == conditions.size()) {
+                query += currentConditions.getAttribute_name() + " = "  + "'" + currentConditions.getValue_() + "';";
+            } else {
+                query += currentConditions.getAttribute_name() + " = " +  "'" + currentConditions.getValue_() + "', ";
+            }
+        }
+
+        return query;
     }
 }
